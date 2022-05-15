@@ -42,10 +42,8 @@ public class itemsAPI extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			 throws ServletException, IOException 
 			{ 
-			 String output = itemObj.insertItem(request.getParameter("itemCode"), 
-			 request.getParameter("itemName"), 
-			request.getParameter("itemPrice"), 
-			request.getParameter("itemDesc")); 
+			 String output = itemObj.insertInquiry(request.getParameter("InquiryType"),  
+			request.getParameter("InquiryDescription")); 
 			response.getWriter().write(output); 
 			}
 
@@ -79,11 +77,9 @@ public class itemsAPI extends HttpServlet {
 			 throws ServletException, IOException 
 			{ 
 			 Map paras = getParasMap(request); 
-			 String output = itemObj.updateItem(paras.get("hidItemIDSave").toString(), 
-			 paras.get("itemCode").toString(), 
-			paras.get("itemName").toString(), 
-			paras.get("itemPrice").toString(), 
-			paras.get("itemDesc").toString()); 
+			 String output = itemObj.updateInquiry(paras.get("hidInquiryIDSave").toString(), 
+			 paras.get("InquiryType").toString(),  
+			paras.get("InquiryDescription").toString()); 
 			response.getWriter().write(output); 
 			} 
 
@@ -94,7 +90,7 @@ public class itemsAPI extends HttpServlet {
 			 throws ServletException, IOException 
 			{ 
 			 Map paras = getParasMap(request); 
-			 String output = itemObj.deleteItem(paras.get("itemID").toString()); 
+			 String output = itemObj.deleteInquiry(paras.get("InquiryID").toString()); 
 			response.getWriter().write(output); 
 			}
 
